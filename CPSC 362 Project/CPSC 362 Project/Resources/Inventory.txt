@@ -1,0 +1,20 @@
+﻿Apples,#0001,27
+Oranges,#0002,2
+Bananas,#0003,64
+Broccoli,#0004,90
+Squash,#0005,12
+Carrots,#0006,40
+Onions,#0007,20
+Pineapples,#0008,45
+Guavas,#0009,56
+Apricots,#0010,34
+Mango,#0011,45
+Papaya,#0012,45
+StrawBerry,#0013,34
+Corn,#0014,67
+Cucumber,#0015,54
+Tomato,#0016,43
+Eggplant,#0017,43
+Bell Pepper,#0018,32
+Cabbage,#0019,34
+Spinach,#0020,45

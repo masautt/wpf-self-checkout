@@ -1,0 +1,144 @@
+using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.IO;
+namespace CPSC_362_Project
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public List<invItem> listOfInv = new List<invItem>();
+        public List<invItem> listOfProduce = new List<invItem>();
+        public List<invItem> listOfMeat = new List<invItem>();
+        public List<invItem> listOfBeverages = new List<invItem>();
+        public List<invItem> listOfDairy = new List<invItem>();
+        public List<invItem> listOfOther = new List<invItem>();
+        public List<cartItem> listOfCartItems = new List<cartItem>();
+        public MainWindow()
+        {
+            InitializeComponent();
+            ScrollViewer.SetHorizontalScrollBarVisibility(inventoryTabs, ScrollBarVisibility.Hidden);
+            GetInvList();
+            printInv();
+            DataContext = GetDairy();
+            helpBtn.Visibility = Visibility.Hidden;
+            inventoryTabs.Visibility = Visibility.Hidden;
+            cartList.Visibility = Visibility.Hidden;
+            this.Title = "Checkout";
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
+        public List<invItem> GetInvList()
+        {
+            string line;
+            DirectoryInfo currDir = new DirectoryInfo(".");
+            StreamReader file = new StreamReader(currDir + "/Inventory.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] words = line.Split(',');
+                invItem tempItem = new invItem();
+                tempItem.invName = words[0];
+                tempItem.invType = words[1];
+                tempItem.invId = Convert.ToInt32(words[2]);
+                tempItem.invQuantity = Convert.ToInt32(words[3]);
+                tempItem.invPrice = Convert.ToDouble(words[4]);
+                tempItem.invStrPrice = "$" + Convert.ToString(words[4]);
+                switch(tempItem.invType)
+                {
+                    case "P":   listOfProduce.Add(tempItem);
+                        break;
+                    case "D":   listOfDairy.Add(tempItem);
+                        break;
+                    case "B":   listOfBeverages.Add(tempItem);
+                        break;
+                    case "O":   listOfOther.Add(tempItem);
+                        break;
+                    case "M":   listOfMeat.Add(tempItem);
+                        break;
+                }
+                listOfInv.Add(tempItem);  
+            }
+            return listOfInv;
+        }
+        public void printInv()
+        {
+            Console.WriteLine("************Produce************");
+            foreach (invItem item in listOfProduce)
+            {
+                Console.WriteLine("Product: {0}\nId: #{1}\nType: {2}\nQuantity: {3}\nPrice: {4}\n", item.invName, item.invId, item.invType, item.invQuantity, item.invStrPrice);
+            }
+            Console.WriteLine("************Dairy************");
+            foreach (invItem item in listOfDairy)
+            {
+                Console.WriteLine("Product: {0}\nId: #{1}\nType: {2}\nQuantity: {3}\nPrice: {4}\n", item.invName, item.invId, item.invType, item.invQuantity, item.invStrPrice);
+            }
+            Console.WriteLine("************Beverages************");
+            foreach (invItem item in listOfBeverages)
+            {
+                Console.WriteLine("Product: {0}\nId: #{1}\nType: {2}\nQuantity: {3}\nPrice: {4}\n", item.invName, item.invId, item.invType, item.invQuantity, item.invStrPrice);
+            }
+            Console.WriteLine("************Meat************");
+            foreach (invItem item in listOfMeat)
+            {
+                Console.WriteLine("Product: {0}\nId: #{1}\nType: {2}\nQuantity: {3}\nPrice: {4}\n", item.invName, item.invId, item.invType, item.invQuantity, item.invStrPrice);
+            }
+            Console.WriteLine("************Other************");
+            foreach (invItem item in listOfOther)
+            {
+                Console.WriteLine("Product: {0}\nId: #{1}\nType: {2}\nQuantity: {3}\nPrice: {4}\n", item.invName, item.invId, item.invType, item.invQuantity, item.invStrPrice);
+            }
+        }
+        public List<invItem> GetProduce()
+        {
+            return listOfProduce;
+        }
+        public List<invItem> GetDairy()
+        {
+            return listOfDairy;
+        }
+        public List<invItem> GetBeverages()
+        {
+            return listOfBeverages;
+        }
+        public List<invItem> GetOther()
+        {
+            return listOfOther;
+        }
+        private void startBtn_Click(object sender, RoutedEventArgs e)
+        {
+            hideTitleScreen();
+            showFirstPage();
+        }
+
+        private void helpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Press Okay To Cancel", "An Employee has been alerted");
+        }
+        private void hideTitleScreen()
+        {
+            startTxt.Visibility = Visibility.Hidden;
+            selfCheckTxt.Visibility = Visibility.Hidden;
+            cartImg.Visibility = Visibility.Hidden;
+            greenBorder.Visibility = Visibility.Hidden;
+        }
+        private void showFirstPage()
+        {
+            cartList.Visibility = Visibility.Visible;
+            inventoryTabs.Visibility = Visibility.Visible;
+            helpBtn.Visibility = Visibility.Visible;
+        }
+    }
+}
