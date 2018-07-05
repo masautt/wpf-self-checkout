@@ -177,3 +177,18 @@ C:\Users\sautt\Google Drive\Documents\College\Year 3\Sem 2\CPSC 362\CPSC 362 Pro
 C:\Users\sautt\Google Drive\Documents\College\Year 3\Sem 2\CPSC 362\CPSC 362 Project 4-18\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.csproj.CoreCompileInputs.cache
 C:\Users\sautt\Google Drive\Documents\College\Year 3\Sem 2\CPSC 362\CPSC 362 Project 4-18\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.exe
 C:\Users\sautt\Google Drive\Documents\College\Year 3\Sem 2\CPSC 362\CPSC 362 Project 4-18\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.pdb
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\bin\Debug\CPSC 362 Project.exe.config
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\bin\Debug\CPSC 362 Project.exe
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\bin\Debug\CPSC 362 Project.pdb
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.csprojAssemblyReference.cache
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\MainWindow.g.cs
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\App.g.cs
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project_MarkupCompile.cache
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project_MarkupCompile.lref
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\MainWindow.baml
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.g.resources
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC_362_Project.Properties.Resources.resources
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.csproj.GenerateResource.cache
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.csproj.CoreCompileInputs.cache
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.exe
+C:\Users\zz-msautter\Desktop\Github\Self-Checkout-v1\CPSC 362 Project\CPSC 362 Project\obj\Debug\CPSC 362 Project.pdb

@@ -19,35 +19,18 @@
     </Window.Resources>
 
 
-    <Canvas Height="1080" Width="1600">
-        <Canvas.Background>
-            <ImageBrush ImageSource="Resources/background.jpg"/>
-        </Canvas.Background>
+    <Canvas Height="1080" Width="1600" Background="#2E2E2E">
+        
 
         <Rectangle x:Name="topBanner" Height="160" Canvas.Left="-2" Stroke="Black" Canvas.Top="-2" Width="1602" Fill="#FFC9C9C9"/>
         <Rectangle x:Name="bottomBanner" Height="130" Stroke="Black" Canvas.Top="950" Width="1602" Fill="#FFCDCDCD" Canvas.Left="-2"/>
 
-        <Image x:Name="dunderMotto" Height="266" Canvas.Left="406" Canvas.Top="-52" Width="901" Source="Resources/dunderLogo banner.jpg"/>
-        <Image x:Name="dunderLogo" Height="266" Canvas.Top="-52" Width="266" Source="Resources/dunderLogoWhite2.PNG" Canvas.Left="10"/>
-
-        <Border x:Name="greenBorder" BorderBrush="Black" Height="503" Width="705" CornerRadius="50" Canvas.Left="441" Canvas.Top="346">
+        <Border x:Name="greenBorder" BorderBrush="Black" Height="503" Width="705" CornerRadius="50" Canvas.Left="441" Canvas.Top="346"  Background="#DC3939">
             <TextBox x:Name="startTxt" IsReadOnly = "True" IsHitTestVisible="False" Height="98" Canvas.Left="880" TextWrapping="Wrap" Text="START" Canvas.Top="415" Width="232" FontSize="72" RenderTransformOrigin="0.486,-0.306" Background="{x:Null}" BorderBrush="{x:Null}"/>
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="#FF2EC51B" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
         </Border>
 
         <Button x:Name="startBtn" Content="" Canvas.Left="441" Margin="0" Canvas.Top="346" Width="705" Height="503" Opacity="0" Click="startBtn_Click"/>
-        <Button x:Name="helpBtn" Content="HELP" Canvas.Left="1344" Margin="0" Canvas.Top="10" Width="228" Height="126" Click="helpBtn_Click">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White" Offset="0"/>
-                    <GradientStop Color="#FF2EC51B" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
+        <Button x:Name="helpBtn" Content="HELP" Canvas.Left="1344" Margin="0" Canvas.Top="10" Width="228" Height="126" Click="helpBtn_Click"  Background="#DC3939">
         </Button>
 
         <TabControl x:Name="inventoryTabs" HorizontalAlignment="Right" Height="691" Width="500" VerticalAlignment="Bottom" Canvas.Left="-744" Canvas.Top="200" TextBlock.FontSize="27">
@@ -135,13 +118,7 @@
                 </ListView.View>
             </ListView>
             <StackPanel Orientation="Horizontal" Height="121">
-                <Button x:Name="CheckoutBtn" Canvas.Left="1362" Margin="0" Canvas.Top="970" Width="183" Click="CheckoutBtn_Click" Content="Checkout" BorderBrush="Black">
-                    <Button.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="White" Offset="0"/>
-                            <GradientStop Color="#FF2EC51B" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Button.Background>
+                <Button x:Name="CheckoutBtn" Canvas.Left="1362" Margin="0" Canvas.Top="970" Width="183" Click="CheckoutBtn_Click" Content="Checkout" BorderBrush="Black" Background="#DC3939">
                 </Button>
                 <StackPanel Orientation="Vertical">
                     <Label x:Name="totalLabel" Content="Total: " Width="293" TextBlock.FontSize="35" Height="62" Margin="70,0,0,0"/>
@@ -166,13 +143,7 @@
             <TextBox x:Name="usernameTextBox" Margin="84,0,77,0" Height="25" Padding="3,3,3,3"/>
             <TextBlock x:Name="passwordTextBlock" Text="Password"  Margin="84,0,0,0"/>
             <PasswordBox x:Name="passwordTextBox" Margin="84,0,77,0" Height="25" Padding="3,3,3,3"/>
-            <Button x:Name="loginBtn" Content ="Login" Height="35" Margin="104,10,104,1" Click="loginButton_Click" TextBlock.FontSize="20" BorderBrush="Black">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="#FF2EC51B" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
+            <Button x:Name="loginBtn" Content ="Login" Height="35" Margin="104,10,104,1" Click="loginButton_Click" TextBlock.FontSize="20" BorderBrush="Black"  Background="#DC3939">
             </Button>
         </StackPanel>
         <StackPanel x:Name="invPanel" Height="694" Canvas.Left="1748" Canvas.Top="-514" Width="950">
@@ -230,13 +201,7 @@
                 <TextBlock Text="Quantity" HorizontalAlignment="Left" Width="115"  Margin="50,0,0,0"/>
                 <TextBox x:Name="newItemQuantityTextBox" HorizontalAlignment="Right" Width="222" Margin="75,0,0,20"  Padding="3,3,3,3"/>
             </StackPanel>
-            <Button x:Name="addItemBtn" Content="Add Item" Height="52" Margin="92,1,110,1" Click="addItemBtn_Click" BorderBrush="Black">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="White" Offset="0"/>
-                        <GradientStop Color="#FF2EC51B" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
+            <Button x:Name="addItemBtn" Content="Add Item" Height="52" Margin="92,1,110,1" Click="addItemBtn_Click" BorderBrush="Black" Background="#DC3939">
             </Button>
         </StackPanel>
     </Canvas>
