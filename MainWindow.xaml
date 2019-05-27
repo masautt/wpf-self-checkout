@@ -1,0 +1,208 @@
+﻿<Window x:Class="wpf-self-checkout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf-self-checkout"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        WindowState="Maximized"
+        WindowStyle="None"
+        mc:Ignorable="d"
+        Topmost="False"  Icon="./Resources/store.ico" KeyDown="activateElevated" Height="1080" Width="1600">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+        </Style>
+    </Window.Resources>
+
+
+    <Canvas Height="1080" Width="1600" Background="#2E2E2E">
+        
+
+        <Rectangle x:Name="topBanner" Height="160" Canvas.Left="-2" Stroke="Black" Canvas.Top="-2" Width="1602" Fill="#FFC9C9C9"/>
+        <Rectangle x:Name="bottomBanner" Height="130" Stroke="Black" Canvas.Top="950" Width="1602" Fill="#FFCDCDCD" Canvas.Left="-2"/>
+
+        <Border x:Name="greenBorder" BorderBrush="Black" Height="503" Width="705" CornerRadius="50" Canvas.Left="441" Canvas.Top="346"  Background="#DC3939">
+            <TextBox x:Name="startTxt" IsReadOnly = "True" IsHitTestVisible="False" Height="98" Canvas.Left="880" TextWrapping="Wrap" Text="START" Canvas.Top="415" Width="232" FontSize="72" RenderTransformOrigin="0.486,-0.306" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        </Border>
+
+        <Button x:Name="startBtn" Content="" Canvas.Left="441" Margin="0" Canvas.Top="346" Width="705" Height="503" Opacity="0" Click="startBtn_Click"/>
+        <Button x:Name="helpBtn" Content="HELP" Canvas.Left="1344" Margin="0" Canvas.Top="10" Width="228" Height="126" Click="helpBtn_Click"  Background="#DC3939">
+        </Button>
+
+        <TabControl x:Name="inventoryTabs" HorizontalAlignment="Right" Height="691" Width="500" VerticalAlignment="Bottom" Canvas.Left="-744" Canvas.Top="200" TextBlock.FontSize="27">
+            <TabItem Header="Produce">
+                <Label>
+                    <ListView x:Name="invListProduce" Height="643" Canvas.Left="72" Canvas.Top="219" Width="500"  TextBlock.FontSize="32" MouseDoubleClick="invListProduce_dClick">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False" >
+                                <GridViewColumn Header="Item" Width="380" DisplayMemberBinding="{Binding invName}"  />
+                                <GridViewColumn Header="Price" Width="90"  DisplayMemberBinding="{Binding invStrPrice}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Label>
+            </TabItem>
+            <TabItem Header="Meat">
+                <Label>
+                    <ListView x:Name="invListMeats" Height="643" Canvas.Left="72" Canvas.Top="219" Width="500" TextBlock.FontSize="32" MouseDoubleClick="invListMeat_dClick">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False" >
+                                <GridViewColumn Header="Item" Width="380" DisplayMemberBinding="{Binding invName}"  />
+                                <GridViewColumn Header="Price" Width="90"  DisplayMemberBinding="{Binding invStrPrice}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Label>
+            </TabItem>
+            <TabItem Header="Beverage">
+                <Label>
+                    <ListView x:Name="invListBeverages" Height="643" Canvas.Left="72" Canvas.Top="219" Width="500" TextBlock.FontSize="32" MouseDoubleClick="invListBeverages_dClick">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False" >
+                                <GridViewColumn Header="Item" Width="380" DisplayMemberBinding="{Binding invName}"  />
+                                <GridViewColumn Header="Price" Width="90"  DisplayMemberBinding="{Binding invStrPrice}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Label>
+            </TabItem>
+            <TabItem Header="Dairy">
+                <Label>
+                    <ListView x:Name="invListDairy" Height="643" Canvas.Left="72" Canvas.Top="219" Width="500" TextBlock.FontSize="32" MouseDoubleClick="invListDairy_dClick">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False" >
+                                <GridViewColumn Header="Item" Width="380" DisplayMemberBinding="{Binding invName}"  />
+                                <GridViewColumn Header="Price" Width="90"  DisplayMemberBinding="{Binding invStrPrice}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Label>
+            </TabItem>
+            <TabItem Header="Other">
+                <Label>
+                    <ListView x:Name="invListOther" Height="643" Canvas.Left="72" Canvas.Top="219" Width="500" TextBlock.FontSize="32" MouseDoubleClick="invListOther_dClick">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False" >
+                                <GridViewColumn Header="Item" Width="380" DisplayMemberBinding="{Binding invName}"  />
+                                <GridViewColumn Header="Price" Width="90"  DisplayMemberBinding="{Binding invStrPrice}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Label>
+            </TabItem>
+        </TabControl>
+
+        <DockPanel x:Name="searchPanel" Canvas.Top="202" Canvas.Left="-1358"  Width="500" Height="691">
+            <TextBox Name="searchBox" DockPanel.Dock="Top" Margin="0,0,0,5" Padding="3,3,3,3" TextChanged="txtFilter_TextChanged" TextBlock.FontSize="30" />
+            <ListView x:Name="searchMenu" TextBlock.FontSize="32" MouseDoubleClick="invList_dClick">
+                <ListView.View  >
+                    <GridView>
+                        <GridViewColumn Header="Item" Width="380" DisplayMemberBinding="{Binding invName}" />
+                        <GridViewColumn Header="Price" Width="90" DisplayMemberBinding="{Binding invStrPrice}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+        <StackPanel x:Name="cartPanel" Canvas.Top="211"  Width="500" Height="691" Canvas.Left="2305" Background="White">
+            <Label Content="Cart" DockPanel.Dock="Top" Margin="220,0,194,5" Padding="0,0,0,0" TextBlock.FontSize="36" Background="White"/>
+            <ListView x:Name="cartList" Canvas.Right="30" Canvas.Top="200" Width="500" TextBlock.FontSize="32" Canvas.Left="1069" MouseDoubleClick="invListCart_dClick" Height="518"  >
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False" >
+                        <GridViewColumn Header="Item" Width="380" DisplayMemberBinding="{Binding invName}"/>
+                        <GridViewColumn Header="Price" Width="90" DisplayMemberBinding="{Binding invStrPrice}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Orientation="Horizontal" Height="121">
+                <Button x:Name="CheckoutBtn" Canvas.Left="1362" Margin="0" Canvas.Top="970" Width="183" Click="CheckoutBtn_Click" Content="Checkout" BorderBrush="Black" Background="#DC3939">
+                </Button>
+                <StackPanel Orientation="Vertical">
+                    <Label x:Name="totalLabel" Content="Total: " Width="293" TextBlock.FontSize="35" Height="62" Margin="70,0,0,0"/>
+                    <Label x:Name="taxTotalLabel" Content="Total+Tax: " Width="362" TextBlock.FontSize="35" Height="60"/>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="searchBtn" Canvas.Left="-283" Margin="0" Canvas.Top="201" Width="39" Height="41" Click="searchBtn_Click" BorderBrush="#FFACACAC" Foreground="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources/search.png"/>
+            </Button.Background>
+        </Button>
+        <StackPanel x:Name="loginPanel" Height="438" Canvas.Left="-574" Canvas.Top="-338" Width="330" Background="White">
+            <Button x:Name="loginExitBtn"  Margin="0" HorizontalAlignment="Right" Width="40" Height="32" BorderBrush="{x:Null}" Click="loginExitBtn_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/exit.png" Stretch="UniformToFill"/>
+                </Button.Background>
+            </Button>
+            <Image Source="Resources/manager.png" Height="258"/>
+            <TextBlock x:Name="userNameTextBlock" Text="Username" Margin="84,0,0,0"/>
+            <TextBox x:Name="usernameTextBox" Margin="84,0,77,0" Height="25" Padding="3,3,3,3"/>
+            <TextBlock x:Name="passwordTextBlock" Text="Password"  Margin="84,0,0,0"/>
+            <PasswordBox x:Name="passwordTextBox" Margin="84,0,77,0" Height="25" Padding="3,3,3,3"/>
+            <Button x:Name="loginBtn" Content ="Login" Height="35" Margin="104,10,104,1" Click="loginButton_Click" TextBlock.FontSize="20" BorderBrush="Black"  Background="#DC3939">
+            </Button>
+        </StackPanel>
+        <StackPanel x:Name="invPanel" Height="694" Canvas.Left="1748" Canvas.Top="-514" Width="950">
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="invLabel" Content="Inventory as of:" Background="White" TextBlock.FontSize="23" Margin="0,0,0,0" Width="902"/>
+                <Button x:Name="invPanelExitBtn"  Margin="0" Height="41" BorderBrush="White" Click="invListExit_Click" Width="48" HorizontalAlignment="Left" BorderThickness="1">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources/exit.png" Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+
+            <ListView  x:Name="invList" Height="660" Canvas.Right="30" Canvas.Top="200" TextBlock.FontSize="32" Canvas.Left="1069" HorizontalAlignment="Left" Width="952" Margin="0,0,0,0" MouseDoubleClick="invListRemove_dClick">
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn Header="Name" Width="350" DisplayMemberBinding="{Binding invName}"/>
+                        <GridViewColumn Header="ID" Width="100" DisplayMemberBinding="{Binding invId}"/>
+                        <GridViewColumn Header="Price" Width="125" DisplayMemberBinding="{Binding invStrPrice}"/>
+                        <GridViewColumn Header="Quantity" Width="125" DisplayMemberBinding="{Binding invQuantity}"/>
+                        <GridViewColumn Header="Type" Width="200" DisplayMemberBinding="{Binding invType}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        <StackPanel x:Name="newItemPanel" Height="691" Canvas.Left="1748" Canvas.Top="211" Width="500" Background="White" Orientation="Vertical" TextBlock.FontSize="26">
+            <Button x:Name="addItemExitBtn"  Margin="0" Height="32" BorderBrush="{x:Null}" Click="addItemExtBtn_Click" HorizontalAlignment="Right" Width="40">
+                <Button.Background>
+                    <ImageBrush ImageSource="Resources/exit.png" Stretch="UniformToFill"/>
+                </Button.Background>
+            </Button>
+            <Image Source="Resources/if_kthememgr_6507.png" Height="237" VerticalAlignment="Bottom" Margin="0,0,0,50"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name" HorizontalAlignment="Left" Width="115" Margin="50,0,0,0" Padding="0,0,0,0"/>
+                <TextBox x:Name="newItemNameTextBox" HorizontalAlignment="Right" Width="222" Margin="75,0,0,20" Padding="3,3,3,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="ID" HorizontalAlignment="Left" Width="115"  Margin="50,0,0,0"/>
+                <TextBox x:Name="newItemIdTextBox" HorizontalAlignment="Right" Width="222" Margin="75,0,0,20"  Padding="3,3,3,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Type" HorizontalAlignment="Left" Width="115"  Margin="50,0,0,0"/>
+                <ComboBox x:Name="newItemTypeComboBox" HorizontalAlignment="Right" Width="222" Margin="75,0,0,20">
+                    <ComboBoxItem  x:Name="produceOption" Content="PRODUCE"/>
+                    <ComboBoxItem  x:Name="dairyOption" Content="DAIRY"/>
+                    <ComboBoxItem  x:Name="meatOption" Content="MEAT"/>
+                    <ComboBoxItem  x:Name="beverageOption" Content="BEVERAGES"/>
+                    <ComboBoxItem x:Name="otherOption" Content="OTHER"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Price" HorizontalAlignment="Left" Width="115"  Margin="50,0,0,0"/>
+                <TextBox x:Name="newItemPriceTextBox" HorizontalAlignment="Right" Width="222" Margin="75,0,0,20"  Padding="3,3,3,3"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Quantity" HorizontalAlignment="Left" Width="115"  Margin="50,0,0,0"/>
+                <TextBox x:Name="newItemQuantityTextBox" HorizontalAlignment="Right" Width="222" Margin="75,0,0,20"  Padding="3,3,3,3"/>
+            </StackPanel>
+            <Button x:Name="addItemBtn" Content="Add Item" Height="52" Margin="92,1,110,1" Click="addItemBtn_Click" BorderBrush="Black" Background="#DC3939">
+            </Button>
+        </StackPanel>
+    </Canvas>
+</Window>
